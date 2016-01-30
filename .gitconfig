@@ -1,0 +1,14 @@
+[core]
+	editor = vim
+	excludesfile = ~/codes/settings/.gitignore
+	autocrlf = input
+[user]
+	email = tadatoshi.tokutake@gmail.com
+	name = ttokutake
+[color]
+	ui = auto
+[alias]
+	st = status
+	br = branch
+	co = checkout
+	chp = cherry-pick
