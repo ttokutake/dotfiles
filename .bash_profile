@@ -3,3 +3,6 @@ export PS1='[\[\033[0;36m\]\u\[\033[0m\]@\[\033[0;32m\]\h\[\033[0m\] \[\033[0;33
 
 # set the default editor
 export EDITOR=vim
+
+# set the default pager
+export PAGER=less
