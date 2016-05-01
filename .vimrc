@@ -47,9 +47,9 @@ set whichwrap=b,s,h,l,[,],<,>
 
 " Change the tab key
 set expandtab
-set tabstop=3
-set shiftwidth=3
-set softtabstop=3
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set smartindent
 
 " Set status line for vim-airline
