@@ -1,27 +1,10 @@
-set nocompatible
-filetype off  " for NeoBundle
-
-if has('vim_starting')
-   set rtp+=$HOME/.vim/bundle/neobundle.vim/
-endif
-call neobundle#begin(expand('~/.vim/bundle'))
-   NeoBundleFetch 'Shougo/neobundle.vim'
-   " Plugins managed by NeoBundle
-   NeoBundle 'bling/vim-airline'
-   NeoBundle 'plasticboy/vim-markdown'
-   NeoBundle 'kannokanno/previm'
-   NeoBundle 'tyru/open-browser.vim'
-   NeoBundle 'elixir-lang/vim-elixir'
-   NeoBundle 'rust-lang/rust.vim'
-   NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-call neobundle#end()
-
-filetype plugin indent on  " restore filetype
-
-" relations of file extensions and file types
-au BufRead,BufNewFile *.md set filetype=markdown
-
-let g:vim_markdown_folding_disabled = 1
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+call dein#begin(expand('~/.vim/dein'))
+call dein#add('Shougo/dein.vim')
+call dein#add('bling/vim-airline')
+call dein#add('elixir-lang/vim-elixir')
+call dein#add('rust-lang/rust.vim')
+call dein#end()
 
 syntax on
 
@@ -61,14 +44,14 @@ set listchars=tab:>>,trail:<
 
 " 全角スペースをハイライト表示
 function! ZenkakuSpace()
-   highlight ZenkakuSpace cterm=reverse ctermfg=DarkRed gui=reverse guifg=DarkRed
+  highlight ZenkakuSpace cterm=reverse ctermfg=DarkRed gui=reverse guifg=DarkRed
 endfunction
 
 if has('syntax')
-   augroup ZenkakuSpace
-      autocmd!
-      autocmd ColorScheme       * call ZenkakuSpace()
-      autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
-   augroup END
-   call ZenkakuSpace()
+  augroup ZenkakuSpace
+    autocmd!
+    autocmd ColorScheme       * call ZenkakuSpace()
+    autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+  augroup END
+  call ZenkakuSpace()
 endif
