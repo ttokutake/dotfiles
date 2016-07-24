@@ -14,8 +14,10 @@ colorscheme torte
 " Emphasize the current line
 set cursorline
 
-" Set highlight on search
+" Set search configures
 set hlsearch
+set smartcase
+set incsearch
 
 " Extend cygwin terminal color
 set t_Co=256
