@@ -2,6 +2,7 @@ set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 call dein#begin(expand('~/.vim/dein'))
 call dein#add('Shougo/dein.vim')
 call dein#add('bling/vim-airline')
+call dein#add('tpope/vim-haml')
 call dein#add('elixir-lang/vim-elixir')
 call dein#add('rust-lang/rust.vim')
 call dein#end()
