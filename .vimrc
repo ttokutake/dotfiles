@@ -16,6 +16,7 @@ set cursorline
 
 " Set search configures
 set hlsearch
+set ignorecase
 set smartcase
 set incsearch
 
