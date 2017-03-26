@@ -5,6 +5,7 @@ call dein#add('bling/vim-airline')
 call dein#add('tpope/vim-haml')
 call dein#add('elixir-lang/vim-elixir')
 call dein#add('rust-lang/rust.vim')
+call dein#add('fatih/vim-go')
 call dein#end()
 
 syntax on
@@ -44,7 +45,7 @@ set laststatus=2
 
 " タブ、空白、改行の可視化
 set list
-set listchars=tab:>>,trail:<
+set listchars=tab:>>,trail:<,nbsp:!
 
 " 全角スペースをハイライト表示
 function! ZenkakuSpace()
