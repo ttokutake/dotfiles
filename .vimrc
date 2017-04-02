@@ -6,6 +6,7 @@ call dein#add('tpope/vim-haml')
 call dein#add('elixir-lang/vim-elixir')
 call dein#add('rust-lang/rust.vim')
 call dein#add('fatih/vim-go')
+call dein#add('nelstrom/vim-visual-star-search')
 call dein#end()
 
 syntax on
