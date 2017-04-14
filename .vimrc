@@ -44,7 +44,7 @@ set smartindent
 " Set status line for vim-airline
 set laststatus=2
 
-" タブ、空白、改行の可視化
+" タブ、空白の可視化
 set list
 set listchars=tab:>>,trail:<,nbsp:!
 
