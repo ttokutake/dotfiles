@@ -9,6 +9,8 @@ call dein#add('elixir-lang/vim-elixir')
 call dein#add('pangloss/vim-javascript')
 call dein#end()
 
+set encoding=utf-8
+
 syntax on
 
 colorscheme torte
