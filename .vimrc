@@ -7,6 +7,7 @@ call dein#add('rust-lang/rust.vim')
 call dein#add('fatih/vim-go')
 call dein#add('elixir-lang/vim-elixir')
 call dein#add('pangloss/vim-javascript')
+call dein#add('leafgarland/typescript-vim')
 call dein#add('mxw/vim-jsx')
 call dein#end()
 
