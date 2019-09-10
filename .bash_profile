@@ -7,3 +7,6 @@ export EDITOR=vim
 
 # set the default pager
 export PAGER=less
+
+# set PATH
+export PATH=${PATH}:${HOME}/bin
