@@ -1,4 +1,4 @@
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 call dein#begin(expand('~/.vim/dein'))
 call dein#add('Shougo/dein.vim')
 call dein#add('bling/vim-airline')
@@ -15,7 +15,7 @@ set encoding=utf-8
 
 syntax on
 
-colorscheme torte
+colorscheme koehler
 
 " Emphasize the current line
 set cursorline
