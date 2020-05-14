@@ -12,3 +12,4 @@
 	br = branch
 	co = checkout
 	chp = cherry-pick
+	dn = diff --name-only
