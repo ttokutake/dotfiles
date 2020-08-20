@@ -5,3 +5,5 @@ echo '' | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/
 brew update
 
 asdf plugin update --all
+
+pip3 install docker-compose --upgrade
