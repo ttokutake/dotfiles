@@ -15,7 +15,7 @@ set encoding=utf-8
 
 syntax on
 
-colorscheme koehler
+colorscheme elflord
 
 " Emphasize the current line
 set cursorline
