@@ -10,6 +10,7 @@ call dein#add('leafgarland/typescript-vim')
 call dein#add('mxw/vim-jsx')
 call dein#end()
 
+set belloff=all
 set encoding=utf-8
 
 syntax on
