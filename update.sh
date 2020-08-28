@@ -1,5 +1,7 @@
 sudo apt update
 sudo apt upgrade -y
+sudo apt autoremove
+sudo apt autoclean
 
 echo '' | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 brew update
