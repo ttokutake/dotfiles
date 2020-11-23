@@ -6,3 +6,7 @@ PS1='[\[\033[0;36m\]\u\[\033[0m\]@\[\033[0;32m\]\h\[\033[0m\] \[\033[0;33m\]\w\[
 
 # set the default editor
 export EDITOR=vim
+
+# For Loading the SSH key
+/usr/bin/keychain --nogui $HOME/.ssh/id_rsa
+source $HOME/.keychain/$HOSTNAME-sh
