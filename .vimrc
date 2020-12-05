@@ -64,9 +64,3 @@ if has('syntax')
   augroup END
   call ZenkakuSpace()
 endif
-
-" Use git grep
-set grepprg=git\ grep\ -nIH
-cabbrev grep silent grep!
-autocmd QuickfixCmdPost *grep* cwindow
-autocmd QuickFixCmdPost *grep* redraw!
