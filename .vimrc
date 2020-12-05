@@ -1,13 +1,9 @@
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-call dein#begin(expand('~/.vim/dein'))
-call dein#add('Shougo/dein.vim')
-call dein#add('bling/vim-airline')
-call dein#add('nelstrom/vim-visual-star-search')
-call dein#add('vim-ruby/vim-ruby')
-call dein#add('pangloss/vim-javascript')
-call dein#add('leafgarland/typescript-vim')
-call dein#add('mxw/vim-jsx')
-call dein#end()
+call plug#begin('~/.vim/plugged')
+Plug 'bling/vim-airline'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'MaxMEllon/vim-jsx-pretty'
+call plug#end()
 
 set belloff=all
 set encoding=utf-8
@@ -64,3 +60,6 @@ if has('syntax')
   augroup END
   call ZenkakuSpace()
 endif
+
+" vim-lsp
+let g:lsp_diagnostics_echo_cursor = 1
