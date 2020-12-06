@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
+Plug 'bronson/vim-visual-star-search'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
