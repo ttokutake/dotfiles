@@ -3,6 +3,8 @@ Plug 'bling/vim-airline'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 call plug#end()
 
 set belloff=all
