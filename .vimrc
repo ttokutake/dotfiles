@@ -14,6 +14,12 @@ syntax on
 
 colorscheme elflord
 
+" Display the cursor as a block
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
+
 " Emphasize the current line
 set cursorline
 
@@ -22,9 +28,6 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
-
-" Extend cygwin terminal color
-set t_Co=256
 
 " Enable backspace
 set backspace=indent,eol,start
@@ -45,11 +48,11 @@ set smartindent
 " Set status line for vim-airline
 set laststatus=2
 
-" タブ、空白の可視化
+" Visualize tab and trailing spaces
 set list
 set listchars=tab:>>,trail:<,nbsp:!
 
-" 全角スペースをハイライト表示
+" Highlight zenkaku space
 function! ZenkakuSpace()
   highlight ZenkakuSpace cterm=reverse ctermfg=DarkRed gui=reverse guifg=DarkRed
 endfunction
