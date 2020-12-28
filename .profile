@@ -1,15 +1,19 @@
-# set the prompt (This must be written in .bashrc)
+# Set the prompt
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWSTASHSTATE=true
 PS1='[\[\033[0;36m\]\u\[\033[0m\]@\[\033[0;32m\]\h\[\033[0m\] \[\033[0;33m\]\w\[\033[0m\]]\[\033[1;31m\]$(__git_ps1)\[\033[0m\] \$ '
 
-# set the default editor
+# Set the default editor
 export EDITOR=vim
 
-# For Loading the SSH key
-/usr/bin/keychain --nogui $HOME/.ssh/id_rsa
-source $HOME/.keychain/$HOSTNAME-sh
+# Load the SSH key
+if [ -f '/usr/bin/keychain' ]; then
+  /usr/bin/keychain --nogui $HOME/.ssh/id_rsa
+  source $HOME/.keychain/$HOSTNAME-sh
+fi
 
-# For asfd
-source $HOME/.asdf/asdf.sh
+# Load asfd
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
+  source $HOME/.asdf/asdf.sh
+fi
