@@ -8,7 +8,7 @@ PS1='[\[\033[0;36m\]\u\[\033[0m\]@\[\033[0;32m\]\h\[\033[0m\] \[\033[0;33m\]\w\[
 export EDITOR=vim
 
 # Load the SSH key
-if [ -f '/usr/bin/keychain' ]; then
+if [ -x '/usr/bin/keychain' ]; then
   /usr/bin/keychain --nogui $HOME/.ssh/id_rsa
   source $HOME/.keychain/$HOSTNAME-sh
 fi
