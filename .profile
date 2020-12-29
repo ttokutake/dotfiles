@@ -20,6 +20,9 @@ if [ -f "$HOME/.asdf/asdf.sh" ]; then
   . $HOME/.asdf/completions/asdf.bash
 fi
 
+# Bash Completion
+[[ -r "/home/linuxbrew/.linuxbrew/etc/profile.d/bash_completion.sh" ]] && . "/home/linuxbrew/.linuxbrew/etc/profile.d/bash_completion.sh"
+
 # Prompt
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
