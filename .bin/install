@@ -13,6 +13,7 @@ function prepare_directory () {
 files_to_link="
   .gitconfig
   .ssh/config
+  .tool-versions
   .vimrc
   .zshrc
 "
