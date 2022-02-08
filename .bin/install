@@ -31,6 +31,7 @@ done
 
 if [ -x "$(command -v brew)" ]; then
   brew install \
+    aquaproj/aqua/aqua \
     asdf \
     git \
     peco \
