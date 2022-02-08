@@ -33,10 +33,17 @@ if [ -x "$(command -v brew)" ]; then
   brew install \
     asdf \
     git \
-    gnupg \
     peco \
     stern \
     terraform \
     tree \
     vim
+fi
+
+if [ -x "$(command -v asdf)" ]; then
+  # https://github.com/rbenv/ruby-build/wiki#suggested-build-environment
+  brew install openssl readline
+  asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+
+  asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 fi
