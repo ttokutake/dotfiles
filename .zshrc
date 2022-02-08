@@ -8,3 +8,12 @@ GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWSTASHSTATE=true
 GIT_PS1_SHOWCOLORHINTS=true
 precmd () { __git_ps1 '%F{cyan}%n%f@%F{green}%m %f[%c]' ' $ ' ' (%s)' }
+
+# my setting
+PATH=$PATH:$HOME/.bin/
+
+# asdf
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+# aqua
+PATH=$HOME/.aqua/bin:$PATH

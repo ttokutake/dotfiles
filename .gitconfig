@@ -1,13 +1,14 @@
 [core]
 	editor = vim
-	excludesfile = ~/repositories/settings/.gitignore
+	excludesfile = ~/repositories/dotfiles/.gitignore
 	autocrlf = input
 [user]
-	email = tadatoshi.tokutake@gmail.com
+	email = tadatoshi.tokutake@quipper.com
 	name = ttokutake
 [color]
 	ui = auto
 [alias]
-	st = status
 	br = branch
 	co = checkout
+	cp = cherry-pick
+	st = status

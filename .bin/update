@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+if [ -x "$(command -v apt-get)" ]; then
+  sudo apt-get update
+  sudo apt-get dist-upgrade -y
+  sudo apt-get autopurge -y
+  sudo apt-get autoclean
+fi
+
+if [ -x "$(command -v brew)" ]; then
+  brew upgrade
+fi
+
+if [ -x "$(command -v asdf)" ]; then
+  if [ -e "$HOME/.asdf/asdf.sh" ]; then
+    asdf update
+  fi
+  asdf plugin update --all
+fi

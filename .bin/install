@@ -1,0 +1,30 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+REPOSITORY=$HOME/repositories/dotfiles
+
+files_to_link="
+  .gitconfig
+  .ssh/config
+  .vimrc
+  .zshrc
+"
+for file_to_link in ${files_to_link}; do
+  link_file=$HOME/${file_to_link}
+
+  if [ -e "${link_file}" ]; then
+    continue
+  fi
+
+  ln -s $REPOSITORY/${file_to_link} ${link_file}
+done
+
+files_to_copy="
+  .bin/update
+"
+for files_to_copy in ${files_to_copy}; do
+  file=$HOME/${files_to_copy}
+
+  cp $REPOSITORY/${files_to_copy} ${file}
+done
