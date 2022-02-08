@@ -27,7 +27,7 @@ for file_to_link in ${files_to_link}; do
   ln -s $REPOSITORY/${file_to_link} ${link_file}
 done
 
-if [ ! -e ".ssh/id_ed25519" ]; then
+if [ ! -e "$HOME/.ssh/id_ed25519" ]; then
   echo "1) tadatoshi.tokutake@gmail.com"
   echo "2) ttokutake@quipper.com"
   read -p "Choose your email address: " num
@@ -40,6 +40,10 @@ if [ ! -e ".ssh/id_ed25519" ]; then
         ;;
   esac
   ssh-keygen -t ed25519 -C $email
+fi
+
+if [ ! -e "$HOME/.vim/autoload/plug.vim" ]; then
+  curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 files_to_copy="
