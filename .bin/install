@@ -4,6 +4,12 @@ set -euo pipefail
 
 REPOSITORY=$HOME/repositories/dotfiles
 
+function prepare_directory () {
+  local file_name=$1
+  local directory_path=$(dirname ${file_name})
+  mkdir -p ${directory_path}
+}
+
 files_to_link="
   .gitconfig
   .ssh/config
@@ -17,6 +23,7 @@ for file_to_link in ${files_to_link}; do
     continue
   fi
 
+  prepare_directory ${link_file}
   ln -s $REPOSITORY/${file_to_link} ${link_file}
 done
 
@@ -26,6 +33,7 @@ files_to_copy="
 for files_to_copy in ${files_to_copy}; do
   file=$HOME/${files_to_copy}
 
+  prepare_directory ${link_file}
   cp $REPOSITORY/${files_to_copy} ${file}
 done
 
