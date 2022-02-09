@@ -11,6 +11,7 @@ function prepare_directory () {
 }
 
 files_to_link="
+  .asdfrc
   .gitconfig
   .ssh/config
   .tool-versions
