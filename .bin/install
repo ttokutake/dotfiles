@@ -13,6 +13,7 @@ function prepare_directory () {
 
 files_to_link="
   .asdfrc
+  .bashrc
   .gitconfig
   .ssh/config
   .tool-versions
@@ -30,7 +31,7 @@ for file_to_link in ${files_to_link}; do
   ln -s $REPOSITORY/${file_to_link} ${link_file}
 done
 
-if [ ! -e "$HOME/.ssh/id_ed25519" ]; then
+if [ ! -e "$HOME/.ssh/id_ed25519.pub" ]; then
   echo "1) tadatoshi.tokutake@gmail.com"
   echo "2) ttokutake@quipper.com"
   read -p "Choose your email address: " num
@@ -73,13 +74,12 @@ fi
 
 if [ -x "$(command -v apt-get)" ]; then
   sudo apt install -y \
+    bash-completion \
     tree \
     vim
 
   # http://asdf-vm.com/guide/getting-started.html#_1-install-dependencies
-  sudo apt install -y \
-    curl \
-    git
+  sudo apt install -y curl git
   if [ ! -d "$HOME/.asdf" ]; then
     git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch $ASDF_VERSION
   fi
