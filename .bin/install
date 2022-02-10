@@ -51,11 +51,11 @@ fi
 files_to_copy="
   .bin/update
 "
-for files_to_copy in ${files_to_copy}; do
-  file=$HOME/${files_to_copy}
+for file_to_copy in ${files_to_copy}; do
+  file=$HOME/${file_to_copy}
 
-  prepare_directory ${link_file}
-  cp $REPOSITORY/${files_to_copy} ${file}
+  prepare_directory ${file}
+  cp $REPOSITORY/${file_to_copy} ${file}
 done
 
 if [ -x "$(command -v brew)" ]; then
