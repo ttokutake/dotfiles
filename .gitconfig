@@ -1,14 +1,16 @@
-[core]
-	editor = vim
-	excludesfile = ~/repositories/dotfiles/.gitignore
-	autocrlf = input
-[user]
-	email = tadatoshi.tokutake@quipper.com
-	name = ttokutake
-[color]
-	ui = auto
 [alias]
 	br = branch
 	co = checkout
 	cp = cherry-pick
 	st = status
+[color]
+	ui = auto
+[core]
+	editor = vim
+	excludesfile = ~/repositories/dotfiles/.gitignore
+	autocrlf = input
+[pull]
+	ff = only
+[user]
+	email = tadatoshi.tokutake@quipper.com
+	name = ttokutake
