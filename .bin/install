@@ -21,7 +21,7 @@ files_to_link="
 for file_to_link in ${files_to_link}; do
   link_file=$HOME/${file_to_link}
 
-  if [ -e "${link_file}" ]; then
+  if [ -L "${link_file}" ]; then
     continue
   fi
 
