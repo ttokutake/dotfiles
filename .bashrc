@@ -1,6 +1,9 @@
 # Default editor
 export EDITOR=vim
 
+# PATH
+export PATH=$PATH:$HOME/.bin
+
 # asdf
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
   . $HOME/.asdf/asdf.sh
