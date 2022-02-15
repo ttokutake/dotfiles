@@ -31,7 +31,7 @@ for file_to_link in ${files_to_link}; do
   ln -s $REPOSITORY/${file_to_link} ${link_file}
 done
 
-if [ ! -e "$HOME/.ssh/id_ed25519.pub" ]; then
+if [ ! -f "$HOME/.ssh/id_ed25519.pub" ]; then
   echo "1) tadatoshi.tokutake@gmail.com"
   echo "2) ttokutake@quipper.com"
   read -p "Choose your email address: " num
@@ -46,7 +46,7 @@ if [ ! -e "$HOME/.ssh/id_ed25519.pub" ]; then
   ssh-keygen -t ed25519 -C $email
 fi
 
-if [ ! -e "$HOME/.vim/autoload/plug.vim" ]; then
+if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
   curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
@@ -79,13 +79,13 @@ if [ -x "$(command -v apt-get)" ]; then
     vim
 
   # http://asdf-vm.com/guide/getting-started.html#_1-install-dependencies
-  sudo apt install -y curl git
-  if [ ! -d "$HOME/.asdf" ]; then
-    git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch $ASDF_VERSION
-  fi
-  set +u
-  source $HOME/.asdf/asdf.sh
-  set -u
+  # sudo apt install -y curl git
+  # if [ ! -d "$HOME/.asdf" ]; then
+  #   git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch $ASDF_VERSION
+  # fi
+  # set +u
+  # source $HOME/.asdf/asdf.sh
+  # set -u
 fi
 
 if [ -x "$(which asdf)" ]; then

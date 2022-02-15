@@ -14,7 +14,7 @@ if [ -x "$(command -v brew)" ]; then
 fi
 
 if [ -x "$(command -v asdf)" ]; then
-  if [ -e "$HOME/.asdf/asdf.sh" ]; then
+  if [ -f "$HOME/.asdf/asdf.sh" ]; then
     asdf update
   fi
   asdf plugin update --all
