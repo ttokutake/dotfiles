@@ -108,7 +108,11 @@ if [ -x "$(which asdf)" ]; then
       libgdbm-dev \
       libdb-dev
   fi
-  asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+  if [ ! $(asdf plugin list | grep -x ruby) ]; then
+    asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+  fi
 
-  asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+  if [ ! $(asdf plugin list | grep -x nodejs) ]; then
+    asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+  fi
 fi
