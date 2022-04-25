@@ -19,3 +19,7 @@ if [ -x "$(command -v asdf)" ]; then
   fi
   asdf plugin update --all
 fi
+
+if [ -x "$(command -v vim)" ]; then
+  vim -c :PlugUpdate -c :PlugUpgrade -c :qa
+fi
