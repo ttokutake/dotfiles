@@ -15,7 +15,7 @@ syntax on
 colorscheme elflord
 
 set foldmethod=syntax
-set foldlevel=4
+set foldlevel=8
 
 " Emphasize the current line
 set cursorline
