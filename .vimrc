@@ -3,6 +3,7 @@ Plug 'bling/vim-airline'
 Plug 'bronson/vim-visual-star-search'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+Plug 'slim-template/vim-slim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 call plug#end()
