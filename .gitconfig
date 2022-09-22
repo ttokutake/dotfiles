@@ -14,3 +14,5 @@
 [user]
 	email = tadatoshi.tokutake@quipper.com
 	name = ttokutake
+[init]
+	defaultBranch = main
