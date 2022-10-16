@@ -5,10 +5,10 @@ export EDITOR=vim
 PATH=$PATH:$HOME/.bin
 
 # asdf
-# if [ -f "$HOME/.asdf/asdf.sh" ]; then
-#   . $HOME/.asdf/asdf.sh
-#   . $HOME/.asdf/completions/asdf.bash
-# fi
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
+  . $HOME/.asdf/asdf.sh
+  . $HOME/.asdf/completions/asdf.bash
+fi
 
 # Bash Completion
 if [ -f "/etc/profile.d/bash_completion.sh" ]; then
