@@ -64,6 +64,7 @@ if [ -x "$(command -v apt-get)" ]; then
   sudo apt install -y \
     bash-completion \
     curl \
+    keychain \
     tree \
     vim
 
