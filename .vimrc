@@ -15,6 +15,7 @@ syntax on
 
 colorscheme elflord
 
+set number
 set foldmethod=syntax
 set foldlevel=8
 
