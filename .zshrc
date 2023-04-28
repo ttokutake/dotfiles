@@ -2,7 +2,7 @@
 autoload -Uz compinit && compinit
 
 # Set Git Prompt
-source /usr/local/etc/bash_completion.d/git-prompt.sh
+source /opt/homebrew/etc/bash_completion.d/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWSTASHSTATE=true
@@ -13,7 +13,7 @@ precmd () { __git_ps1 "%F{cyan}%n%f@%F{green}%m %f[%c]" " $ " " (%s)" }
 PATH=$PATH:$HOME/.bin/
 
 # asdf
-. /usr/local/opt/asdf/libexec/asdf.sh
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 # aqua
 PATH=$HOME/.aqua/bin:$PATH
