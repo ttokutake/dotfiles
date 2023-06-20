@@ -35,10 +35,11 @@ for file_to_link in ${files_to_link}; do
         echo ${anchor} >> ${link_file}
         echo ". $REPOSITORY/${file_to_link}" >> ${link_file}
       fi
+      continue
     else
-      echo "warn: ${link_file} exists as a file!"
+      echo "warn: Remove ${link_file} which is a file!"
+      rm -f ${link_file}
     fi
-    continue
   fi
 
   prepare_directory ${link_file}
