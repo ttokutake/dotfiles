@@ -49,7 +49,7 @@ set laststatus=2
 
 " Visualize tab and trailing spaces
 set list
-set listchars=tab:>>,trail:<,nbsp:!
+set listchars=tab:..,trail:<,nbsp:!
 
 " Highlight zenkaku space
 function! ZenkakuSpace()
