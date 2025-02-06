@@ -4,11 +4,8 @@ export EDITOR=vim
 # PATH
 PATH=$PATH:$HOME/.bin
 
-# asdf
-if [ -f "$HOME/.asdf/asdf.sh" ]; then
-  . $HOME/.asdf/asdf.sh
-  . $HOME/.asdf/completions/asdf.bash
-fi
+# mise
+eval "$(~/.local/bin/mise activate bash)"
 
 # Bash Completion
 if [ -f "/etc/profile.d/bash_completion.sh" ]; then

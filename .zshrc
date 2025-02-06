@@ -12,8 +12,8 @@ precmd () { __git_ps1 "%F{cyan}%n%f@%F{green}%m %f[%c]" " $ " " (%s)" }
 # my setting
 PATH=$PATH:$HOME/.bin/
 
-# asdf
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+# mise
+eval "$(mise activate zsh)"
 
 # aqua
 PATH=$HOME/.aqua/bin:$PATH

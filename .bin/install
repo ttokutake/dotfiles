@@ -3,7 +3,6 @@
 set -euo pipefail
 
 REPOSITORY=$HOME/repositories/dotfiles
-ASDF_VERSION=v0.9.0
 
 function prepare_directory () {
   local file_name=$1
@@ -12,7 +11,6 @@ function prepare_directory () {
 }
 
 files_to_link="
-  .asdfrc
   .bashrc
   .gitconfig
   .ssh/config
@@ -65,22 +63,16 @@ if [ -x "$(command -v apt-get)" ]; then
   sudo apt install -y \
     bash-completion \
     curl \
+    git \
     keychain \
     tree \
     vim
 
-  read -p 'Do you install asdf? [y/n]: ' bool
+  read -p 'Do you install mise? [y/n]: ' bool
   case $bool in
     y | yes)
-      email="tadatoshi.tokutake@gmail.com"
-      # http://asdf-vm.com/guide/getting-started.html#_1-install-dependencies
-      sudo apt install -y curl git
-      if [ ! -d "$HOME/.asdf" ]; then
-        git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch $ASDF_VERSION
-      fi
-      set +u
-      source $HOME/.asdf/asdf.sh
-      set -u
+      curl https://mise.run | sh
+      eval "$(~/.local/bin/mise activate bash)"
       ;;
     *)
       ;;
@@ -90,8 +82,8 @@ fi
 if [ -x "$(command -v brew)" ]; then
   brew install \
     aquaproj/aqua/aqua \
-    asdf \
     git \
+    mise \
     peco \
     stern \
     terraform \
@@ -114,31 +106,14 @@ for file_to_copy in ${files_to_copy}; do
   cp $REPOSITORY/${file_to_copy} ${file}
 done
 
-if [ -x "$(which asdf)" ]; then
-  # https://github.com/rbenv/ruby-build/wiki#suggested-build-environment
-  if [ -x "$(command -v brew)" ]; then
-    brew install openssl readline
-  fi
-  if [ -x "$(command -v apt-get)" ]; then
-    sudo apt install -y \
-      autoconf \
-      bison \
-      build-essential \
-      libssl-dev \
-      libyaml-dev \
-      libreadline6-dev \
-      zlib1g-dev \
-      libncurses5-dev \
-      libffi-dev \
-      libgdbm6 \
-      libgdbm-dev \
-      libdb-dev
-  fi
-  if [ ! $(asdf plugin list | grep -x ruby) ]; then
-    asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
-  fi
-
-  if [ ! $(asdf plugin list | grep -x nodejs) ]; then
-    asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+if [ -x "$(which mise)" ]; then
+  if [[ "$SHELL" == */bash ]]; then
+    mise use -g usage
+    # This requires bash-completion to be installed
+    mkdir -p /etc/bash_completion.d/
+    mise completion bash --include-bash-completion-lib | sudo tee /etc/bash_completion.d/mise > /dev/null
+    sudo sed -i -e \
+      's/    \. "$_comp_init_startup_config"/    if [[ "$_comp_init_startup_config" != *\/mise ]]; then\n        . "$_comp_init_startup_config"\n    fi/' \
+      /etc/bash_completion.d/mise
   fi
 fi

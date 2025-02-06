@@ -13,11 +13,8 @@ if [ -x "$(command -v brew)" ]; then
   brew upgrade
 fi
 
-if [ -x "$(command -v asdf)" ]; then
-  if [ -f "$HOME/.asdf/asdf.sh" ]; then
-    asdf update
-  fi
-  asdf plugin update --all
+if [ -x "$(command -v mise)" ]; then
+  mise self-update
 fi
 
 if [ -x "$(command -v vim)" ]; then
