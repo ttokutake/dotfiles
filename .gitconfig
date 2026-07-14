@@ -3,6 +3,7 @@
 	co = checkout
 	cp = cherry-pick
 	st = status
+	wt = worktree
 [color]
 	ui = auto
 [core]
