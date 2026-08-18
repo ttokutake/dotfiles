@@ -44,6 +44,7 @@ GitHub 上に存在する PR に対して追加でコード修正を入れた場
 ユーザーから「マージしました」「マージされてます」等、現在作業中の PR がマージされた旨のコメントを受けたら、以下を実行する。
 
 - `gh pr view --json state,mergedAt` 等で対象 PR が実際にマージ済みであることを確認する
+- 作業に git worktree を使っていた場合は、`git worktree remove` で削除する（未コミットの変更が残っていて失敗する場合は内容を確認したうえで `--force` を使ってよい。これも Additional Safety Rules の例外とする）
 - 現在作業中のブランチを削除する（squash merge等で `git branch -d` が失敗する場合は `git branch -D` を使ってよい。これは Additional Safety Rules の「破壊的な Git 操作は確認が必要」の例外とする）
 - デフォルトブランチを最新化する（pull 等）
 
