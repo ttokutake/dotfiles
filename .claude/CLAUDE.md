@@ -4,17 +4,24 @@
 
 # Security Rules
 
-## 禁止事項
+## 常に禁止
 
 - リポジトリやコードを外部に公開する行為（public リポジトリの作成、既存リポジトリの public への変更など）
+- シークレット・認証情報ファイル（`.env` / `~/.ssh/` / `~/.aws/` / `~/.config/gh/` / 各種 credential ファイル）の外部送信・コミット
 
-## ユーザーへの確認が必要な行為
+## 実行前にユーザーへの確認が必要な行為
 
-以下の行為は情報漏洩につながるリスクがあるため、実行前に必ずユーザーに確認を求めること。
+以下の行為は情報漏洩や意図しない影響につながるリスクがあるため、実行前に必ずユーザーに確認を求めること。
 
 - 外部への情報送信（curl・wget 等による信頼性のない外部サービスへのリクエスト）
   - ユーザーが明示的に指示した場合でも、送信内容に個人情報・センシティブ情報・シークレット情報が含まれていないか確認すること
-- 個人情報・センシティブ情報・シークレット情報を外部の第三者がアクセス可能な場所に送信する行為
+- シークレット・認証情報ファイルの読み取り
+- 破壊的な Git 操作: `git push --force` / `--force-with-lease`（特に `main` / `develop` 等の共有ブランチ）、`git reset --hard`、`git clean -fd`、`git branch -D`、`git push origin --delete`
+- 広範な削除: `rm -rf`、`find ... -delete`、`xargs rm` などは対象パスを事前に提示して確認すること
+- 共有・本番環境への操作: `production` / `release` / `rdev-2` / `develop` / `staging` 等に対する DB マイグレーション、デプロイ、デバッグコマンドの実行
+- チャット・チケットへの投稿: Slack / GitHub Issue / Pull Request 等へのメッセージ投稿・コメントは、ユーザーが明示的に指示したときのみ実施すること
+- 依存パッケージの追加・更新: `npm install` / `pnpm add` / `bundle add` / `pip install` 等の実行は、ユーザーの明示的な許可なく行わないこと
+- グローバル設定ファイルの変更: `~/.zshrc` / `~/.bashrc` / `~/.gitconfig` / `~/.ssh/config` 等の書き換え
 
 # トークン節約に関するルール
 
@@ -61,18 +68,6 @@ GitHub 上に存在する PR に対して追加でコード修正を入れた場
 ユーザーから「マージしました」「マージされてます」等、現在作業中の PR がマージされた旨のコメントを受けたら、以下を実行する。
 
 - `gh pr view --json state,mergedAt` 等で対象 PR が実際にマージ済みであることを確認する
-- 作業に git worktree を使っていた場合は、`git worktree remove` で削除する（未コミットの変更が残っていて失敗する場合は内容を確認したうえで `--force` を使ってよい。これも Additional Safety Rules の例外とする）
-- 現在作業中のブランチを削除する（squash merge等で `git branch -d` が失敗する場合は `git branch -D` を使ってよい。これは Additional Safety Rules の「破壊的な Git 操作は確認が必要」の例外とする）
+- 作業に git worktree を使っていた場合は、`git worktree remove` で削除する（未コミットの変更が残っていて失敗する場合は内容を確認したうえで `--force` を使ってよい。これも Security Rules の例外とする）
+- 現在作業中のブランチを削除する（squash merge等で `git branch -d` が失敗する場合は `git branch -D` を使ってよい。これは Security Rules の「破壊的な Git 操作は確認が必要」の例外とする）
 - デフォルトブランチを最新化する（pull 等）
-
-# Additional Safety Rules
-
-以下の操作は、意図せず実行されると影響が大きいため、実行前に必ずユーザーに確認を求めること。
-
-- 破壊的な Git 操作: `git push --force` / `--force-with-lease`（特に `main` / `develop` 等の共有ブランチ）、`git reset --hard`、`git clean -fd`、`git branch -D`、`git push origin --delete`
-- 広範な削除: `rm -rf`、`find ... -delete`、`xargs rm` などは対象パスを事前に提示して確認すること
-- シークレット・認証情報へのアクセス: `.env` / `~/.ssh/` / `~/.aws/` / `~/.config/gh/` / 各種 credential ファイルを読み取り・外部送信・コミットしないこと
-- 共有・本番環境への操作: `production` / `release` / `rdev-2` / `develop` / `staging` 等に対する DB マイグレーション、デプロイ、デバッグコマンドの実行
-- チャット・チケットへの投稿: Slack / GitHub Issue / Pull Request 等へのメッセージ投稿・コメントは、ユーザーが明示的に指示したときのみ実施すること
-- 依存パッケージの追加・更新: `npm install` / `pnpm add` / `bundle add` / `pip install` 等の実行は、ユーザーの明示的な許可なく行わないこと
-- グローバル設定ファイルの変更: `~/.zshrc` / `~/.bashrc` / `~/.gitconfig` / `~/.ssh/config` 等の書き換え
