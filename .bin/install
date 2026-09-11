@@ -12,6 +12,8 @@ function prepare_directory () {
 
 files_to_link="
   .bashrc
+  .claude/CLAUDE.md
+  .claude/hooks/notify.sh
   .gitconfig
   .ssh/config
   .tool-versions
