@@ -19,7 +19,8 @@
 - 破壊的な Git 操作: `git push --force` / `--force-with-lease`（特に `main` / `develop` 等の共有ブランチ）、`git reset --hard`、`git clean -fd`、`git branch -D`、`git push origin --delete`
 - 広範な削除: `rm -rf`、`find ... -delete`、`xargs rm` などは対象パスを事前に提示して確認すること
 - 共有・本番環境への操作: `production` / `release` / `rdev-2` / `develop` / `staging` 等に対する DB マイグレーション、デプロイ、デバッグコマンドの実行
-- チャット・チケットへの投稿: Slack / GitHub Issue / Pull Request 等へのメッセージ投稿・コメントは、ユーザーが明示的に指示したときのみ実施すること
+- チャット・チケットへの投稿: Slack / GitHub Issue 等へのメッセージ投稿・コメントは、ユーザーが明示的に指示したときのみ実施すること
+  - PR への投稿は「PR 運用」の「確認なしで行ってよいこと」を参照
 - 依存パッケージの追加・更新: `npm install` / `pnpm add` / `bundle add` / `pip install` 等の実行は、ユーザーの明示的な許可なく行わないこと
 - グローバル設定ファイルの変更: `~/.zshrc` / `~/.bashrc` / `~/.gitconfig` / `~/.ssh/config` 等の書き換え
 
@@ -51,6 +52,16 @@
 # PR 運用
 
 GitHub 上に存在する PR に対して追加でコード修正を入れた場合は、必ず PR の説明文も実態に合わせて修正すること。
+
+## 確認なしで行ってよいこと
+
+以下は自走度を優先し、ユーザーへの確認なしで実施してよい。
+
+- PR の作成
+- 自分が作成した PR、または自分が Assign されている PR への投稿
+  - 投稿には description の更新、コメントの投稿、レビュー指摘への返信を含む
+  - bot が作成した PR でも、Assign されていれば対象
+  - 上記以外の PR への投稿は Security Rules のとおり明示指示があるときのみ
 
 ## スキル修正時の確認事項
 
