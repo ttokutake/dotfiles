@@ -7,15 +7,16 @@
 #   notify.sh quiet          再通知を止める（UserPromptSubmit / SessionEnd hook、手動実行）
 #   notify.sh mute           次の stop を 1 回だけ黙らせる（作業継続中のターンで Claude が使う）
 #
-# 声をかけたあとは INTERVAL 秒おきに MAX_REPEAT 回まで同じ内容を繰り返す。
+# 「終わったよ」は 1 回だけ言う。
+# 「確認して」は CONFIRM_SCHEDULE の待ち時間（秒、スペース区切り）で繰り返す。
+# 既定は最初の 1 時間は 10 分おき、その後の 3 時間は 1 時間おき。
 # 手動で止めたいときは別ターミナルかセッション内で以下を実行する。
 #
 #   ~/.claude/hooks/notify.sh quiet
 
 set -uo pipefail
 
-INTERVAL=${CLAUDE_NOTIFY_INTERVAL:-600}
-MAX_REPEAT=${CLAUDE_NOTIFY_MAX_REPEAT:-6}
+CONFIRM_SCHEDULE=${CLAUDE_NOTIFY_CONFIRM_SCHEDULE:-"600 600 600 600 600 600 3600 3600 3600"}
 STATE_DIR=${CLAUDE_NOTIFY_STATE_DIR:-${TMPDIR:-/tmp}/claude-notify}
 
 function state_file () {
@@ -47,29 +48,31 @@ function stop_all () {
 function speak () {
   local key=$1
   local message=$2
+  local schedule=${3:-}
 
   mkdir -p "${STATE_DIR}"
   stop_one "$(state_file "${key}")"
 
   say "${message}" || true
 
-  if [ "${MAX_REPEAT}" -gt 0 ]; then
-    nohup "$0" __repeat "${key}" "${message}" >/dev/null 2>&1 &
+  if [ -n "${schedule// /}" ]; then
+    nohup "$0" __repeat "${key}" "${message}" "${schedule}" >/dev/null 2>&1 &
     echo $! > "$(state_file "${key}")"
   fi
 }
 
-# バックグラウンドで再通知を繰り返す。stop_one に kill されるか上限に達したら終わる。
+# バックグラウンドで再通知を繰り返す。stop_one に kill されるか schedule を使い切ったら終わる。
 function repeat () {
   local key=$1
   local message=$2
+  local schedule=$3
 
   # sleep 中に kill されたとき、次の say に進まずその場で終わるようにする。
   trap 'rm -f "$(state_file "${key}")"; exit 0' TERM INT
 
-  local i
-  for ((i = 0; i < MAX_REPEAT; i++)); do
-    sleep "${INTERVAL}"
+  local wait
+  for wait in ${schedule}; do
+    sleep "${wait}"
     say "${message}" || true
   done
   rm -f "$(state_file "${key}")"
@@ -112,7 +115,7 @@ command -v say >/dev/null 2>&1 || exit 0
 event=${1:-}
 case "${event}" in
   __repeat)
-    repeat "${2:-default}" "${3:-終わったよ}"
+    repeat "${2:-default}" "${3:-確認して}" "${4:-}"
     ;;
 
   stop)
@@ -135,7 +138,7 @@ case "${event}" in
     case "$(printf '%s' "${input}" | json_value message)" in
       *'waiting for your input'*) exit 0 ;;
     esac
-    speak "$(printf '%s' "${input}" | json_value session_id)" '確認して'
+    speak "$(printf '%s' "${input}" | json_value session_id)" '確認して' "${CONFIRM_SCHEDULE}"
     ;;
 
   quiet)
